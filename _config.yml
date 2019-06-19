@@ -23,7 +23,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 links:
   about: "/about"
   media: "/media"
-  
+
 plainwhite:
   name: Tamina Pitt
   tagline: Computer Engineering Student
@@ -41,6 +41,7 @@ markdown: kramdown
 theme: plainwhite
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
