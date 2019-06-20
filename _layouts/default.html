@@ -24,9 +24,8 @@
 
         <!-- Site Links -->
         <p>
-          <a href="{{site.mylinks.about | absolute_url}}">About</a><br/>
-          <a href="{{site.mylinks.blog | absolute_url}}">Blog</a><br/>
-          <a href="{{site.mylinks.media | absolute_url}}">Media</a>
+          <!-- <a href="{{site.mylinks.blog | absolute_url}}">Blog</a><br/> -->
+          <a href="{{site.mylinks.media | absolute_url}}">As Seen In</a>
         </p>
 
         <!-- Social Links -->
@@ -35,6 +34,8 @@
           <a href="https://www.linkedin.com/{{ site.mylinks.linkedIn }}">LinkedIn<br/></a>
           <a href="{{site.github.owner_url}}">Github<br/></a>
         </p>
+
+        <p>Email: {{site.mylinks.email}}</p>
 
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
 
