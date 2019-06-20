@@ -1,38 +1,60 @@
 <!DOCTYPE html>
-<!-- from https://github.com/thelehhman/plainwhite-jekyll/blob/master/_layouts/default.html -->
-<html lang="en">
-<head>
-	{%- include head.html -%}
-</head>
-<body>
-	<main class="container">
-		<section class="about">
-			<img src="{{ "/assets/portfolio.png" | relative_url }}" alt="{{ site.plainwhite.name }}">
-      <h2>{{ site.plainwhite.name }}</h2>
+<html lang="{{ site.lang | default: "en-US" }}">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-			<p class="tagline">{{ site.plainwhite.tagline }}</p>
-			<ul class="social">
-				<a href="https://github.com/{{ site.plainwhite.social_links.github }}"><li><i class="icon-github-circled"></i></li></a>
-				<a href="https://www.linkedin.com/{{ site.plainwhite.social_links.linkedIn }}"><li><i class="icon-linkedin-squared"></i></li></a>
-				<a href="https://twitter.com/{{ site.plainwhite.social_links.twitter }}"><li><i class="icon-twitter-squared"></i></li></a>
-			</ul>
-      <a href="{{site.url}}"><li>Home</li></a>
-      <a href="{{site.links.about}}"><li>About</li></a>
-      <a href="{{site.links.media}}"><li>Media</li></a>
-			<p>&copy; 2019</p>
-		</section>
-		<section class="content">
-			{{ content }}
-		</section>
-	</main>
-	{%- if site.plainwhite.analytics_id -%}
-	<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.plainwhite.analytics_id }}"></script>
-	<script>
-		window.dataLayer = window.dataLayer || [];
-		function gtag() { dataLayer.push(arguments); }
-		gtag('js', new Date());
-		gtag('config', '{{ site.plainwhite.analytics_id }}');
-	</script>
-	{%- endif -%}
-</body>
+{% seo %}
+    <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+    <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1><a href="{{ "/" | absolute_url }}">{{ site.title | default: site.github.repository_name }}</a></h1>
+
+        {% if site.logo %}
+          <img src="{{site.logo | relative_url}}" alt="Logo" height=250px />
+        {% endif %}
+
+        <p>{{ site.description | default: site.github.project_tagline }}</p>
+
+        <!-- Site Links -->
+        <p>
+          <a href="{{site.mylinks.about | absolute_url}}">About</a><br/>
+          <a href="{{site.mylinks.blog | absolute_url}}">Blog</a><br/>
+          <a href="{{site.mylinks.media | absolute_url}}">Media</a>
+        </p>
+
+        <!-- Social Links -->
+        <p>
+          <a href="https://twitter.com/{{ site.mylinks.twitter }}">Twitter<br/></a>
+          <a href="https://www.linkedin.com/{{ site.mylinks.linkedIn }}">LinkedIn<br/></a>
+          <a href="{{site.github.owner_url}}">Github<br/></a>
+        </p>
+
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+
+      </header>
+      <section>
+
+      {{ content }}
+
+      </section>
+    </div>
+    <script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+    {% if site.google_analytics %}
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+      ga('create', '{{ site.google_analytics }}', 'auto');
+      ga('send', 'pageview');
+    </script>
+    {% endif %}
+  </body>
 </html>
